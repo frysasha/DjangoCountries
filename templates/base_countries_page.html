@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+    {% block style %}
+
+        <link rel="stylesheet" href="style.css">
+        .menu {
+            border: 1px solid black;
+        }
+        .content{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        footer {
+            border: 1px solid blue;
+        }
+        ul.alfabet li {display: inline-block; margin: 0; margin-right: 5px;}
+        ul.paginator li {display: inline-block; margin: 0; margin-right: 5px;}
+    {% endblock %}
+    </style>
+</head>
+<body>
+<nav class="menu">
+    /<a href="{% url 'countries-list' %}">Список стран</a>/<a href="{% url 'languages-list' %}">Языки стран</a>/
+</nav>
+<ul class="alfabet">
+{% for char in alfabet %}
+    <li><a href="/countries-list/alfabet/countries-that-start-with-{{ char }}">{{ char }}</a></li>
+{% endfor %}
+</ul>
+<ul>
+{% for country in page_obj %}
+    <li><a href="/countries-list/{{ country }}">{{ country }}</a></li>
+{% endfor %}
+</ul>
+<nav>
+    <ul class="paginator">
+        {% if page_obj.paginator.page_range|length > 1 %}
+            {% for p in page_obj.paginator.page_range %}
+            <li>
+                <a href="?page={{ p }}">{{ p }}</a>
+            </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</nav>
+<header>
+    Django Countries
+</header>
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+    Автор: Шляхов А.И.
+</footer>
+</body>
+</html>

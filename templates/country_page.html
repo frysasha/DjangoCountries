@@ -1,0 +1,17 @@
+{% extends "base_countries_page.html" %}
+
+{% block title %}
+    Страна {{ country_name }}
+{% endblock %}
+
+{% block content %}
+    <h1>
+        Страна {{ country_name }}
+    </h1>
+    <div>Языки:</div>
+    <ol>
+    {% for language in languages %}
+        <li><a href="/countries-list/special-language/{{ language }}">{{ language }}</a></li>
+    {% endfor %}
+    </ol>
+{% endblock %}

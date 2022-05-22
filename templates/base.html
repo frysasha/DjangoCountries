@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .menu {
+            border: 1px solid black;
+        }
+        .content{
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        footer {
+            border: 1px solid blue;
+        }
+    </style>
+    {% block style %}
+
+        <link rel="stylesheet" href="style.css">
+
+    {% endblock %}
+</head>
+<body>
+
+    <nav class="menu">
+        /<a href="{% url 'countries-list' %}">Список стран</a>/<a href="{% url 'languages-list' %}">Языки стран</a>/
+    </nav>
+
+<header>
+    Django Countries
+</header>
+<main>
+
+    {% block content %}
+    {% endblock %}
+</main>
+<footer>
+    Автор: Шляхов А.И.
+</footer>
+</body>
+</html>

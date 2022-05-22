@@ -1,0 +1,5 @@
+/MainApp/fixtures
+/MainApp/json_to_db.py
+/country-by-languages.json
+/django_countries_venv
+/.gitignore
